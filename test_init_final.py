@@ -651,7 +651,9 @@ async def on_message(msg):
 		chflg = 1
 		
 	if client.get_channel(channel) != msg.channel :
-		if msg.channel.id == int('552122574855864321'):
+		##### 사다리 채널바꾸기
+		'''
+		if msg.channel.id == int('552122574855864321'): #### 사다리 채널ID 값넣으면 됨
 			message = await msg.channel.fetch_message(msg.id)
 			##################################
 
@@ -675,6 +677,8 @@ async def on_message(msg):
 			##################################
 		else :
 			return None
+		'''
+		return None
 	else :
 		message = await client.get_channel(channel).fetch_message(msg.id)
 		
