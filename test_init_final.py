@@ -279,6 +279,10 @@ async def my_background_task():
 			if channel != '':			
 				#await client.get_channel(channel).send('now : ' + nowDateString + '   ' + nowTimeString + '  end : ' + endDateString + '   ' + endTimeString, tts=False)
 				if endTimeString == nowTimeString and endDateString == nowDateString:
+					for i in range(bossNum):
+						if bossMungFlag[i] == True:
+							bossTimeString[i] = tmp_bossTime[i].strftime('%H:%M:%S')
+							bossDateString[i] = tmp_bossTime[i].strftime('%Y-%m-%d')
 					await dbSave()
 					await client.get_channel(channel).send('<갑자기 인사해도 놀라지마세요!>', tts=False)
 					await asyncio.sleep(2)
@@ -995,6 +999,10 @@ async def on_message(msg):
 		##################################
 
 		if message.content.startswith('!명치'):
+			for i in range(bossNum):
+				if bossMungFlag[i] == True:
+					bossTimeString[i] = tmp_bossTime[i].strftime('%H:%M:%S')
+					bossDateString[i] = tmp_bossTime[i].strftime('%Y-%m-%d')
 			await dbSave()
 			await client.get_channel(channel).send('<명치 맞고 숨고르는 중... 갑자기 인사해도 놀라지마세요!>', tts=False)
 			await asyncio.sleep(2)
