@@ -652,6 +652,7 @@ async def on_message(msg):
 		
 	if client.get_channel(channel) != msg.channel :
 		if client.get_channel(channel) == 552122574855864321:
+			message = await client.get_channel(channel).fetch_message(msg.id)
 			##################################
 
 			if message.content.startswith('!사다리'):
