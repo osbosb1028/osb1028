@@ -651,8 +651,8 @@ async def on_message(msg):
 		chflg = 1
 		
 	if client.get_channel(channel) != msg.channel :
-		if client.get_channel(channel) == 552122574855864321:
-			message = await client.get_channel(channel).fetch_message(msg.id)
+		if msg.channel.id == int('552122574855864321'):
+			message = await msg.channel.fetch_message(msg.id)
 			##################################
 
 			if message.content.startswith('!사다리'):
@@ -668,9 +668,9 @@ async def on_message(msg):
 						description= '```' + result_ladderSTR + '```',
 						color=0xff00ff
 						)
-					await client.get_channel(channel).send(embed=embed, tts=False)
+					await msg.channel.send(embed=embed, tts=False)
 				else:
-					await client.get_channel(channel).send('```추첨인원이 총 인원과 같거나 많습니다. 재입력 해주세요```', tts=False)
+					await msg.channel.send('```추첨인원이 총 인원과 같거나 많습니다. 재입력 해주세요```', tts=False)
 
 			##################################
 		else :
